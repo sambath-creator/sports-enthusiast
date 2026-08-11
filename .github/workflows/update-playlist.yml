@@ -8,6 +8,14 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    shell: bash
+
+# Disable automatic dependency caching
+env:
+  ACTIONS_CACHE_NODE_MODULES: false
+
 jobs:
   update-playlist:
     runs-on: ubuntu-latest
