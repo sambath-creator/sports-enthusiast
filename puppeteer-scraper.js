@@ -3,10 +3,9 @@ import puppeteer from "puppeteer";
 const SITES = [
   "https://touchcric.is",
   "https://smartcric.is",
-  "https://freehit.eu"
+  "https://freehit.eu/free"
 ];
 
-// Mobile device profile
 const MOBILE_EMULATION = {
   viewport: {
     width: 390,
@@ -19,57 +18,67 @@ const MOBILE_EMULATION = {
     "(KHTML, like Gecko) Chrome/122.0.0.0 Mobile Safari/537.36"
 };
 
-// Utility: wait for Cloudflare challenge to finish
-async function waitForCloudflare(page) {
-  try {
-    await page.waitForNavigation({
-      timeout: 15000,
-      waitUntil: "networkidle0"
-    });
-  } catch (_) {
-    // Cloudflare sometimes doesn't trigger navigation
-  }
-
-  // Wait for JS challenge to finish
-  await page.waitForTimeout(6000);
+function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
 }
 
-// Extract match links from rendered DOM
+async function waitForCloudflare(page) {
+  try {
+    await page.waitForNavigation({ timeout: 15000, waitUntil: "networkidle0" });
+  } catch (_) {}
+  await sleep(6000);
+}
+
 async function extractMatchLinks(page) {
   return await page.evaluate(() => {
-    const anchors = [...document.querySelectorAll("a")];
-    return anchors
+    return [...document.querySelectorAll("a")]
       .map(a => a.href)
       .filter(h =>
-        h.includes("/live/") ||
-        h.includes("/watch/") ||
-        h.includes("/stream/")
+        h.includes("/live") ||
+        h.includes("/watch") ||
+        h.includes("/stream")
       );
   });
 }
 
-// Extract iframe URLs from rendered DOM
 async function extractIframeLinks(page) {
   return await page.evaluate(() => {
-    const iframes = [...document.querySelectorAll("iframe")];
-    return iframes.map(f => f.src).filter(Boolean);
+    return [...document.querySelectorAll("iframe")]
+      .map(f => f.src)
+      .filter(Boolean);
   });
 }
 
-// Intercept network requests to capture .m3u8 URLs
 async function interceptM3U8(page) {
   const m3u8Links = new Set();
 
   await page.setRequestInterception(true);
+
   page.on("request", req => {
     const url = req.url();
-    if (url.includes(".m3u8")) {
+    if (url.match(/\.m3u8(\?|$)/)) {
+      console.log("REQUEST M3U8:", url);
       m3u8Links.add(url);
     }
     req.continue();
   });
 
+  page.on("response", res => {
+    const url = res.url();
+    if (url.match(/\.m3u8(\?|$)/)) {
+      console.log("RESPONSE M3U8:", url);
+      m3u8Links.add(url);
+    }
+  });
+
   return m3u8Links;
+}
+
+async function extractInlineM3U8(page) {
+  return await page.evaluate(() => {
+    const matches = document.body.innerHTML.match(/https?:\/\/[^"' ]+\.m3u8/gi);
+    return matches || [];
+  });
 }
 
 export async function runPuppeteerScraper() {
@@ -118,7 +127,10 @@ export async function runPuppeteerScraper() {
                 timeout: 20000
               });
 
-              await page.waitForTimeout(5000);
+              await sleep(15000);
+
+              const inline = await extractInlineM3U8(page);
+              inline.forEach(u => m3u8Collector.add(u));
 
               const m3u8Links = [...m3u8Collector];
               console.log(`    ${iframeUrl} → ${m3u8Links.length} streams`);
