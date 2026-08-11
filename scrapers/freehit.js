@@ -1,5 +1,6 @@
 // scrapers/freehit.js
-const puppeteer = require("puppeteer");
+import puppeteer from "puppeteer";
+
 
 async function scrapeFreeHit() {
   const browser = await puppeteer.launch({
