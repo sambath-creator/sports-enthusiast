@@ -1,6 +1,9 @@
+import scrapeFreeHit from "./scrapers/freehit.js";
 import { execSync } from "child_process";
 import dotenv from "dotenv";
 dotenv.config();
+
+
 
 function run(cmd) {
   console.log("Running:", cmd);

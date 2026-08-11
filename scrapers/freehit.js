@@ -107,4 +107,4 @@ async function scrapeFreeHit() {
   return Array.from(streams); // return deduplicated list
 }
 
-module.exports = scrapeFreeHit;
+export default scrapeFreeHit;
