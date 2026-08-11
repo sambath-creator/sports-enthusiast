@@ -1,8 +1,7 @@
 #EXTM3U
-# Updated: 2026-08-11T07:43:47.901Z
+# Updated: 2026-08-11T08:02:53.916Z
 # Sources: 1 live streams
-# This playlist contains only official, free-to-air cricket streams.
-# Auto-generated daily. Dead links are automatically excluded.
+# Auto-generated daily.
 
 #EXTINF:-1 tvg-id="1" tvg-name="ICC TV" tvg-logo="" group-title="Cricket" tvg-country="International",ICC TV
 https://www.icc.tv/
