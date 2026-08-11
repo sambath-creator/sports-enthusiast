@@ -1,8 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
-import { writeFileSync, readFileSync, existsSync } from "fs";
+import { writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
-
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -14,14 +13,12 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
   process.exit(1);
 }
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// ─────────────────────────────────────────────────────────────
+// Fetch helper
+// ─────────────────────────────────────────────────────────────
 
-// ─── YouTube helpers ──────────────────────────────────────────────
-
-/**
- * Fetch a URL and return the response text, or null on failure.
- */
 async function fetchText(url, opts = {}) {
   try {
     const controller = new AbortController();
@@ -40,14 +37,112 @@ async function fetchText(url, opts = {}) {
   }
 }
 
-/**
- * Given a YouTube channel handle URL (https://www.youtube.com/@handle),
- * resolve the channel ID and check whether the channel is currently live.
- * Returns { isLive, videoId, title, streamUrl } or null.
- *
- * We use the public channel page HTML which contains a liveBadge indicator
- * and a /watch?v= link for any active live stream.
- */
+// ─────────────────────────────────────────────────────────────
+// Auto‑Discovery of streams
+// ─────────────────────────────────────────────────────────────
+
+// Extract all .m3u8 links from a webpage
+async function discoverM3U8Links(url) {
+  const result = await fetchText(url, { timeoutMs: 20000 });
+  if (!result.ok) return [];
+
+  const matches = [...result.text.matchAll(/https?:\/\/[^"' ]+\.m3u8/gi)];
+  return matches.map(m => m[0]);
+}
+
+// Extract YouTube channels from curated GitHub M3U repos
+async function discoverYouTubeChannelsFromRepo(repoUrl) {
+  const result = await fetchText(repoUrl, { timeoutMs: 20000 });
+  if (!result.ok) return [];
+
+  const matches = [...result.text.matchAll(/https:\/\/www\.youtube\.com\/@[\w-]+/gi)];
+  return matches.map(m => m[0]);
+}
+
+// Insert newly discovered sources into Supabase
+async function autoInsertSources(newSources) {
+  if (newSources.length === 0) return;
+
+  const rows = newSources.map(src => ({
+    name: src.name,
+    source_type: src.type,
+    source_url: src.url,
+    group_name: src.group || "Cricket",
+    country: src.country || null,
+    discovered_from: src.discovered_from || null,
+    is_active: true
+  }));
+
+  const { error } = await supabase.from("sources").insert(rows);
+  if (error) {
+    console.error("Failed to auto-insert sources:", error.message);
+  } else {
+    console.log(`Auto-added ${rows.length} new sources.`);
+  }
+}
+
+// Main auto-discovery pipeline
+async function autoDiscoverSources() {
+  const discovered = [];
+
+  // TouchCric
+  const touchLinks = await discoverM3U8Links("https://touchcric.is");
+  for (const link of touchLinks) {
+    discovered.push({
+      name: "TouchCric Auto",
+      type: "hls",
+      url: link,
+      discovered_from: "touchcric"
+    });
+  }
+
+  // SmartCric
+  const smartLinks = await discoverM3U8Links("https://smartcric.is");
+  for (const link of smartLinks) {
+    discovered.push({
+      name: "SmartCric Auto",
+      type: "hls",
+      url: link,
+      discovered_from: "smartcric"
+    });
+  }
+
+  // FreeHit
+  const freeHitLinks = await discoverM3U8Links("https://freehit.eu");
+  for (const link of freeHitLinks) {
+    discovered.push({
+      name: "FreeHit Auto",
+      type: "hls",
+      url: link,
+      discovered_from: "freehit"
+    });
+  }
+
+  // Curated GitHub repos (Option C)
+  const curatedRepos = [
+    "https://raw.githubusercontent.com/iptv-org/iptv/master/channels/cricket.m3u",
+    "https://raw.githubusercontent.com/iptv-org/iptv/master/channels/sports.m3u"
+  ];
+
+  for (const repo of curatedRepos) {
+    const ytLinks = await discoverYouTubeChannelsFromRepo(repo);
+    for (const link of ytLinks) {
+      discovered.push({
+        name: "YouTube Auto",
+        type: "youtube_channel",
+        url: link,
+        discovered_from: "github"
+      });
+    }
+  }
+
+  await autoInsertSources(discovered);
+}
+
+// ─────────────────────────────────────────────────────────────
+// YouTube helpers (unchanged)
+// ─────────────────────────────────────────────────────────────
+
 function isCricketBroadcastTitle(title) {
   if (!title) return false;
 
@@ -58,24 +153,20 @@ function isCricketBroadcastTitle(title) {
 }
 
 async function checkYouTubeChannel(channelUrl) {
-  // Try /live shortcut — YouTube redirects to the active live stream if one exists.
   const liveShortcut = channelUrl.replace(/\/$/, "") + "/live";
   const result = await fetchText(liveShortcut, { timeoutMs: 20000 });
 
   if (!result.ok) {
-    // Fall back to the channel page itself
     const pageResult = await fetchText(channelUrl, { timeoutMs: 20000 });
     if (!pageResult.ok) return null;
     return parseYouTubePage(pageResult.text, channelUrl);
   }
 
-  // If we got redirected to a watch URL, extract the video ID
   const watchMatch = result.text.match(/"videoId":"([a-zA-Z0-9_-]{11})"/);
   const titleMatch =
     result.text.match(/"title":"([^"]+)"/) ||
     result.text.match(/<title>([^<]+)<\/title>/);
 
-  // Check for live indicator
   const hasLiveBadge =
     result.text.includes('"style":"LIVE"') ||
     result.text.includes('"label":"Live"') ||
@@ -92,15 +183,10 @@ async function checkYouTubeChannel(channelUrl) {
     };
   }
 
-  // Also try parsing the full channel page
   return parseYouTubePage(result.text, channelUrl);
 }
 
-/**
- * Parse a YouTube channel page HTML to find a live stream.
- */
-function parseYouTubePage(html, channelUrl) {
-  // Look for live stream entries in the rendered tabs
+function parseYouTubePage(html) {
   const liveMatch = html.match(/"isLive":true.*?"videoId":"([a-zA-Z0-9_-]{11})"/s);
   const liveMatch2 = html.match(/"videoId":"([a-zA-Z0-9_-]{11})"[^}]*?"isLive":true/s);
   const titleMatch = html.match(/"title":"([^"]*(?:[Ll]ive|CRICKET|cricket|match|Match)[^"]*)"/);
@@ -118,10 +204,10 @@ function parseYouTubePage(html, channelUrl) {
   return { isLive: false, videoId: null, title: null, streamUrl: null };
 }
 
-/**
- * Check an HLS stream URL — do a HEAD or GET request and verify it returns
- * something that looks like an M3U8 playlist.
- */
+// ─────────────────────────────────────────────────────────────
+// HLS checker
+// ─────────────────────────────────────────────────────────────
+
 async function checkHlsStream(streamUrl) {
   const result = await fetchText(streamUrl, { timeoutMs: 15000 });
   if (!result.ok) {
@@ -134,18 +220,15 @@ async function checkHlsStream(streamUrl) {
   return { isLive: false, error: "Not a valid M3U8 response" };
 }
 
-// ─── Health check + M3U generation ────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// Source checker
+// ─────────────────────────────────────────────────────────────
 
-/**
- * Check a single source and record the result in stream_checks.
- * Returns the updated source with stream_url filled in if live.
- */
 async function checkSource(source) {
   let isLive = false;
   let streamUrl = null;
   let title = null;
   let error = null;
-  let httpStatus = null;
 
   if (source.source_type === "youtube_channel" || source.source_type === "youtube_live") {
     const result = await checkYouTubeChannel(source.source_url);
@@ -160,40 +243,32 @@ async function checkSource(source) {
     } else {
       error = "Failed to fetch channel page";
     }
-  } else if (source.source_type === "hls") {
+  }
+
+  else if (source.source_type === "hls") {
     const target = source.stream_url || source.source_url;
     const result = await checkHlsStream(target);
     isLive = result.isLive;
     if (isLive) streamUrl = target;
     else error = result.error;
-  } else if (source.source_type === "icc_tv" || source.source_type === "web") {
-    // For ICC.tv and web sources, we include them as a reference entry.
-    // ICC.tv requires a browser session to resolve actual stream URLs,
-    // so we include the page URL as a playable link.
-    streamUrl = source.source_url;
-    isLive = true; // Include as a reference; user opens the page to watch.
   }
 
-  // Record health check
-  const { error: insertError } = await supabase.from("stream_checks").insert({
+  else if (source.source_type === "icc_tv" || source.source_type === "web") {
+    streamUrl = source.source_url;
+    isLive = true;
+  }
+
+  await supabase.from("stream_checks").insert({
     source_id: source.id,
     status: isLive ? "ok" : "fail",
     error: error || null,
   });
 
-  if (insertError) {
-    console.error(`  Failed to record check for ${source.name}:`, insertError.message);
-  }
-
-  // Update source stream_url if we found a live stream
   if (isLive && streamUrl && streamUrl !== source.stream_url) {
-    const { error: updateError } = await supabase
+    await supabase
       .from("sources")
       .update({ stream_url: streamUrl })
       .eq("id", source.id);
-    if (updateError) {
-      console.error(`  Failed to update stream_url for ${source.name}:`, updateError.message);
-    }
   }
 
   return {
@@ -204,15 +279,15 @@ async function checkSource(source) {
   };
 }
 
-/**
- * Generate the M3U playlist content from a list of live sources.
- */
+// ─────────────────────────────────────────────────────────────
+// M3U generator
+// ─────────────────────────────────────────────────────────────
+
 function generateM3U(sources) {
   let m3u = "#EXTM3U\n";
   m3u += `# Updated: ${new Date().toISOString()}\n`;
   m3u += `# Sources: ${sources.length} live streams\n`;
-  m3u += `# This playlist contains only official, free-to-air cricket streams.\n`;
-  m3u += `# Auto-generated daily. Dead links are automatically excluded.\n\n`;
+  m3u += `# Auto-generated daily.\n\n`;
 
   for (const s of sources) {
     const title = s.resolvedTitle || s.name;
@@ -229,18 +304,16 @@ function generateM3U(sources) {
   return m3u;
 }
 
-/**
- * Main: fetch all active sources, check each one, generate M3U, write to disk.
- */
+// ─────────────────────────────────────────────────────────────
+// Main
+// ─────────────────────────────────────────────────────────────
+
 async function main() {
-  const args = process.argv.slice(2);
-  const isUpdate = args.includes("--update") || args.includes("--build") || args.length === 0;
+  console.log("=== Auto-discovery phase ===");
+  await autoDiscoverSources();
 
   console.log("=== Cricket M3U Playlist Generator ===");
-  console.log(`Mode: ${isUpdate ? "update (check all sources)" : "unknown — defaulting to update"}`);
-  console.log();
 
-  // Fetch all active sources
   const { data: sources, error } = await supabase
     .from("sources")
     .select("*")
@@ -271,8 +344,7 @@ async function main() {
   console.log(`\n${liveSources.length} of ${sources.length} sources are currently live.`);
 
   if (liveSources.length === 0) {
-    console.log("No live streams found. Writing a minimal playlist with ICC.tv reference.");
-    // Always include ICC.tv as a reference entry even if nothing is live
+    console.log("No live streams found. Adding ICC.tv reference.");
     const iccTv = sources.find((s) => s.source_type === "icc_tv");
     if (iccTv) {
       liveSources.push({
@@ -284,14 +356,11 @@ async function main() {
     }
   }
 
-  // Generate M3U
   const m3uContent = generateM3U(liveSources);
   const outputPath = resolve(__dirname, "playlist.m3u");
   writeFileSync(outputPath, m3uContent, "utf-8");
-  console.log(`\nPlaylist written to: ${outputPath}`);
-  console.log(`File size: ${(m3uContent.length / 1024).toFixed(1)} KB`);
+  console.log(`Playlist written to: ${outputPath}`);
 
-  // Also write a JSON summary for debugging
   const summary = {
     generated_at: new Date().toISOString(),
     total_sources: sources.length,
