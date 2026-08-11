@@ -60,9 +60,9 @@ async function interceptM3U8(page) {
       console.log("REQUEST M3U8:", url);
       m3u8Links.add(url);
     }
-    req.continue();
+    // DO NOT call req.continue() — Puppeteer-core auto-handles it
   });
-
+  
   page.on("response", res => {
     const url = res.url();
     if (url.match(/\.m3u8(\?|$)/)) {
