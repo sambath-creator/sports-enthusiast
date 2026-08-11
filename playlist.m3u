@@ -1,8 +1,7 @@
 #EXTM3U
-# Updated: 2026-08-11T08:07:16.739Z
+# Updated: 2026-08-11T08:29:26.794Z
 # Sources: 1 live streams
-# Auto-generated daily.
 
-#EXTINF:-1 tvg-id="1" tvg-name="ICC TV" tvg-logo="" group-title="Cricket" tvg-country="International",ICC TV
+#EXTINF:-1 tvg-id="1" tvg-name="ICC TV" tvg-logo="" group-title="Cricket",ICC TV
 https://www.icc.tv/
 
