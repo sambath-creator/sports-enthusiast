@@ -1,0 +1,14 @@
+{
+  "name": "cricket-m3u-playlist",
+  "private": true,
+  "type": "module",
+  "description": "Daily-updated M3U playlist of free-to-air cricket streams from official sources",
+  "scripts": {
+    "build": "node --check index.js",
+    "update": "node index.js --update",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4"
+  }
+}

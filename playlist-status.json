@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-08-11T00:27:28.562Z",
+  "total_sources": 14,
+  "live_count": 2,
+  "live_sources": [
+    {
+      "name": "ICC — Official",
+      "stream_url": "https://www.youtube.com/watch?v=_ECVhD6r-bU",
+      "country": "INT",
+      "group": "Cricket — Official"
+    },
+    {
+      "name": "ICC.tv",
+      "stream_url": "https://app.icc.tv",
+      "country": "INT",
+      "group": "Cricket — Official"
+    }
+  ]
+}
