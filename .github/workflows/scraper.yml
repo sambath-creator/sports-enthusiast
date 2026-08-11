@@ -5,6 +5,9 @@ on:
     - cron: "*/15 * * * *"
   workflow_dispatch:
 
+env:
+  ACTIONS_CACHE_NODE_MODULES: false
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
