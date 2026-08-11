@@ -1,3 +1,4 @@
+import { runPuppeteerScraper } from "./puppeteer-scraper.js";
 import { createClient } from "@supabase/supabase-js";
 import { writeFileSync } from "fs";
 import { resolve, dirname } from "path";
@@ -195,18 +196,10 @@ async function autoInsertSources(newSources) {
 async function autoDiscoverSources() {
   const discovered = [];
 
-  // Hybrid scraper sites
-  const sites = [
-    "https://touchcric.is",
-    "https://smartcric.is",
-    "https://freehit.eu"
-  ];
-
-  for (const site of sites) {
-    console.log(`Scraping: ${site}`);
-    const found = await scrapeSite(site);
-    discovered.push(...found);
-  }
+  // Puppeteer scraper (TouchCric / SmartCric / FreeHit)
+  console.log("Running Puppeteer scraper...");
+  const puppeteerStreams = await runPuppeteerScraper();
+  discovered.push(...puppeteerStreams);
 
   // Curated GitHub repos
   const curatedRepos = [
