@@ -23,13 +23,24 @@ async function fetchText(url, opts = {}) {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), opts.timeoutMs ?? 15000);
+
+    const mobileUA =
+      "Mozilla/5.0 (Linux; Android 10; Mobile) AppleWebKit/537.36 " +
+      "(KHTML, like Gecko) Chrome/122.0.0.0 Mobile Safari/537.36";
+
     const res = await fetch(url, {
       signal: controller.signal,
-      headers: opts.headers || {},
+      headers: {
+        "User-Agent": mobileUA,
+        "Accept": "*/*",
+        ...opts.headers
+      },
       redirect: "follow",
     });
+
     clearTimeout(timeout);
     if (!res.ok) return { ok: false, status: res.status, text: "" };
+
     const text = await res.text();
     return { ok: true, status: res.status, text };
   } catch (err) {
@@ -38,7 +49,7 @@ async function fetchText(url, opts = {}) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Auto‑Discovery of streams
+// Auto‑Discovery of video streams
 // ─────────────────────────────────────────────────────────────
 
 // Extract all .m3u8 links from a webpage
