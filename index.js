@@ -217,7 +217,7 @@ function generateM3U(sources) {
   for (const s of sources) {
     const title = s.resolvedTitle || s.name;
     const logo = s.logo_url || "";
-    const group = s.group || "Cricket";
+    const group = s.group_name || "Cricket";
 
     m3u += `#EXTINF:-1 tvg-id="${s.id}" tvg-name="${s.name}" tvg-logo="${logo}" group-title="${group}"`;
     if (s.country) m3u += ` tvg-country="${s.country}"`;
@@ -300,7 +300,7 @@ async function main() {
       name: s.name,
       stream_url: s.stream_url,
       country: s.country,
-      group: s.group,
+      group_name: s.group_name,
     })),
   };
   const summaryPath = resolve(__dirname, "playlist-status.json");
