@@ -16,13 +16,13 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ─────────────────────────────────────────────────────────────
-// Fetch helper
+// Mobile User-Agent Fetch
 // ─────────────────────────────────────────────────────────────
 
 async function fetchText(url, opts = {}) {
   try {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), opts.timeoutMs ?? 15000);
+    const timeout = setTimeout(() => controller.abort(), opts.timeoutMs ?? 20000);
 
     const mobileUA =
       "Mozilla/5.0 (Linux; Android 10; Mobile) AppleWebKit/537.36 " +
@@ -33,13 +33,19 @@ async function fetchText(url, opts = {}) {
       headers: {
         "User-Agent": mobileUA,
         "Accept": "*/*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": url,
+        "Origin": url,
         ...opts.headers
       },
-      redirect: "follow",
+      redirect: "follow"
     });
 
     clearTimeout(timeout);
-    if (!res.ok) return { ok: false, status: res.status, text: "" };
+
+    if (!res.ok) {
+      return { ok: false, status: res.status, text: "" };
+    }
 
     const text = await res.text();
     return { ok: true, status: res.status, text };
@@ -49,32 +55,122 @@ async function fetchText(url, opts = {}) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Auto‑Discovery of video streams
+// HTML Extraction Helpers
 // ─────────────────────────────────────────────────────────────
 
-// Extract all .m3u8 links from a webpage
-async function discoverM3U8Links(url) {
-  const result = await fetchText(url, { timeoutMs: 20000 });
-  if (!result.ok) return [];
+// Extract match links from landing page
+function extractMatchLinks(html, baseUrl) {
+  const links = [];
+  const regex = /href="([^"]+)"/gi;
+  let match;
 
-  const matches = [...result.text.matchAll(/https?:\/\/[^"' ]+\.m3u8/gi)];
-  return matches.map(m => m[0]);
+  while ((match = regex.exec(html)) !== null) {
+    const href = match[1];
+
+    if (
+      href.includes("/live/") ||
+      href.includes("/watch/") ||
+      href.includes("/stream/")
+    ) {
+      const fullUrl = href.startsWith("http") ? href : baseUrl + href;
+      links.push(fullUrl);
+    }
+  }
+
+  return [...new Set(links)];
 }
 
-// Extract YouTube channels from curated GitHub M3U repos
+// Extract iframe URLs from match pages
+function extractIframeLinks(html) {
+  const links = [];
+  const regex = /<iframe[^>]+src="([^"]+)"/gi;
+  let match;
+
+  while ((match = regex.exec(html)) !== null) {
+    links.push(match[1]);
+  }
+
+  return [...new Set(links)];
+}
+
+// Extract .m3u8 links from iframe pages
+function extractM3U8Links(html) {
+  const matches = [...html.matchAll(/https?:\/\/[^"' ]+\.m3u8/gi)];
+  return [...new Set(matches.map(m => m[0]))];
+}
+
+// ─────────────────────────────────────────────────────────────
+// Hybrid Scraper (Landing → Match → Iframe → .m3u8)
+// ─────────────────────────────────────────────────────────────
+
+async function scrapeSite(baseUrl) {
+  const discovered = [];
+
+  // Step 1: fetch landing page
+  const landing = await fetchText(baseUrl);
+  if (!landing.ok) return discovered;
+
+  // Step 2: extract match links
+  const matchLinks = extractMatchLinks(landing.text, baseUrl);
+
+  for (const matchUrl of matchLinks) {
+    const matchPage = await fetchText(matchUrl);
+    if (!matchPage.ok) continue;
+
+    // Step 3: extract iframe URLs
+    const iframeLinks = extractIframeLinks(matchPage.text);
+
+    for (const iframeUrl of iframeLinks) {
+      const iframePage = await fetchText(iframeUrl);
+      if (!iframePage.ok) continue;
+
+      // Step 4: extract m3u8 links
+      const m3u8Links = extractM3U8Links(iframePage.text);
+
+      for (const m3u8 of m3u8Links) {
+        discovered.push({
+          name: "Auto Stream",
+          type: "hls",
+          url: m3u8,
+          discovered_from: baseUrl
+        });
+      }
+    }
+  }
+
+  return discovered;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Curated GitHub Repo Scraper (YouTube Channels Only)
+// ─────────────────────────────────────────────────────────────
+
 async function discoverYouTubeChannelsFromRepo(repoUrl) {
   const result = await fetchText(repoUrl, { timeoutMs: 20000 });
   if (!result.ok) return [];
 
   const matches = [...result.text.matchAll(/https:\/\/www\.youtube\.com\/@[\w-]+/gi)];
-  return matches.map(m => m[0]);
+  return [...new Set(matches.map(m => m[0]))];
 }
 
-// Insert newly discovered sources into Supabase
+// ─────────────────────────────────────────────────────────────
+// Supabase Auto‑Insert (with duplicate removal)
+// ─────────────────────────────────────────────────────────────
+
 async function autoInsertSources(newSources) {
   if (newSources.length === 0) return;
 
-  const rows = newSources.map(src => ({
+  const unique = [];
+  const seen = new Set();
+
+  for (const src of newSources) {
+    if (!seen.has(src.url)) {
+      seen.add(src.url);
+      unique.push(src);
+    }
+  }
+
+  const rows = unique.map(src => ({
     name: src.name,
     source_type: src.type,
     source_url: src.url,
@@ -92,51 +188,36 @@ async function autoInsertSources(newSources) {
   }
 }
 
-// Main auto-discovery pipeline
+// ─────────────────────────────────────────────────────────────
+// Auto‑Discovery Pipeline
+// ─────────────────────────────────────────────────────────────
+
 async function autoDiscoverSources() {
   const discovered = [];
 
-  // TouchCric
-  const touchLinks = await discoverM3U8Links("https://touchcric.is");
-  for (const link of touchLinks) {
-    discovered.push({
-      name: "TouchCric Auto",
-      type: "hls",
-      url: link,
-      discovered_from: "touchcric"
-    });
+  // Hybrid scraper sites
+  const sites = [
+    "https://touchcric.is",
+    "https://smartcric.is",
+    "https://freehit.eu"
+  ];
+
+  for (const site of sites) {
+    console.log(`Scraping: ${site}`);
+    const found = await scrapeSite(site);
+    discovered.push(...found);
   }
 
-  // SmartCric
-  const smartLinks = await discoverM3U8Links("https://smartcric.is");
-  for (const link of smartLinks) {
-    discovered.push({
-      name: "SmartCric Auto",
-      type: "hls",
-      url: link,
-      discovered_from: "smartcric"
-    });
-  }
-
-  // FreeHit
-  const freeHitLinks = await discoverM3U8Links("https://freehit.eu");
-  for (const link of freeHitLinks) {
-    discovered.push({
-      name: "FreeHit Auto",
-      type: "hls",
-      url: link,
-      discovered_from: "freehit"
-    });
-  }
-
-  // Curated GitHub repos (Option C)
+  // Curated GitHub repos
   const curatedRepos = [
     "https://raw.githubusercontent.com/iptv-org/iptv/master/channels/cricket.m3u",
     "https://raw.githubusercontent.com/iptv-org/iptv/master/channels/sports.m3u"
   ];
 
   for (const repo of curatedRepos) {
+    console.log(`Scanning GitHub repo: ${repo}`);
     const ytLinks = await discoverYouTubeChannelsFromRepo(repo);
+
     for (const link of ytLinks) {
       discovered.push({
         name: "YouTube Auto",
@@ -151,7 +232,7 @@ async function autoDiscoverSources() {
 }
 
 // ─────────────────────────────────────────────────────────────
-// YouTube helpers (unchanged)
+// YouTube Helpers
 // ─────────────────────────────────────────────────────────────
 
 function isCricketBroadcastTitle(title) {
@@ -170,7 +251,7 @@ async function checkYouTubeChannel(channelUrl) {
   if (!result.ok) {
     const pageResult = await fetchText(channelUrl, { timeoutMs: 20000 });
     if (!pageResult.ok) return null;
-    return parseYouTubePage(pageResult.text, channelUrl);
+    return parseYouTubePage(pageResult.text);
   }
 
   const watchMatch = result.text.match(/"videoId":"([a-zA-Z0-9_-]{11})"/);
@@ -190,11 +271,11 @@ async function checkYouTubeChannel(channelUrl) {
       isLive: true,
       videoId,
       title: titleMatch ? titleMatch[1] : "Live Cricket",
-      streamUrl: `https://www.youtube.com/watch?v=${videoId}`,
+      streamUrl: `https://www.youtube.com/watch?v=${videoId}`
     };
   }
 
-  return parseYouTubePage(result.text, channelUrl);
+  return parseYouTubePage(result.text);
 }
 
 function parseYouTubePage(html) {
@@ -208,7 +289,7 @@ function parseYouTubePage(html) {
       isLive: true,
       videoId,
       title: titleMatch ? titleMatch[1] : "Live Cricket",
-      streamUrl: `https://www.youtube.com/watch?v=${videoId}`,
+      streamUrl: `https://www.youtube.com/watch?v=${videoId}`
     };
   }
 
@@ -216,7 +297,7 @@ function parseYouTubePage(html) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// HLS checker
+// HLS Checker
 // ─────────────────────────────────────────────────────────────
 
 async function checkHlsStream(streamUrl) {
@@ -224,15 +305,17 @@ async function checkHlsStream(streamUrl) {
   if (!result.ok) {
     return { isLive: false, error: `HTTP ${result.status}` };
   }
+
   const text = result.text.trim();
   if (text.startsWith("#EXTM3U")) {
     return { isLive: true };
   }
+
   return { isLive: false, error: "Not a valid M3U8 response" };
 }
 
 // ─────────────────────────────────────────────────────────────
-// Source checker
+// Source Checker (YouTube + HLS + ICC + Web)
 // ─────────────────────────────────────────────────────────────
 
 async function checkSource(source) {
@@ -241,40 +324,47 @@ async function checkSource(source) {
   let title = null;
   let error = null;
 
+  // YouTube
   if (source.source_type === "youtube_channel" || source.source_type === "youtube_live") {
     const result = await checkYouTubeChannel(source.source_url);
+
     if (result && result.isLive && isCricketBroadcastTitle(result.title)) {
       isLive = true;
       streamUrl = result.streamUrl;
       title = result.title;
     } else if (result && result.isLive) {
-      error = "Rejected: title does not identify a real cricket broadcast";
+      error = "Rejected: not a cricket broadcast";
     } else if (result && !result.isLive) {
       error = "No active live stream";
     } else {
-      error = "Failed to fetch channel page";
+      error = "Failed to fetch YouTube channel";
     }
   }
 
+  // HLS
   else if (source.source_type === "hls") {
     const target = source.stream_url || source.source_url;
     const result = await checkHlsStream(target);
+
     isLive = result.isLive;
     if (isLive) streamUrl = target;
     else error = result.error;
   }
 
+  // ICC.tv or Web (always considered live)
   else if (source.source_type === "icc_tv" || source.source_type === "web") {
     streamUrl = source.source_url;
     isLive = true;
   }
 
+  // Log check result
   await supabase.from("stream_checks").insert({
     source_id: source.id,
     status: isLive ? "ok" : "fail",
-    error: error || null,
+    error: error || null
   });
 
+  // Update stream_url if changed
   if (isLive && streamUrl && streamUrl !== source.stream_url) {
     await supabase
       .from("sources")
@@ -286,29 +376,35 @@ async function checkSource(source) {
     ...source,
     isLive,
     stream_url: isLive ? streamUrl : null,
-    resolvedTitle: title,
+    resolvedTitle: title
   };
 }
 
 // ─────────────────────────────────────────────────────────────
-// M3U generator
+// M3U Playlist Generator (with duplicate removal)
 // ─────────────────────────────────────────────────────────────
 
 function generateM3U(sources) {
-  let m3u = "#EXTM3U\n";
-  m3u += `# Updated: ${new Date().toISOString()}\n`;
-  m3u += `# Sources: ${sources.length} live streams\n`;
-  m3u += `# Auto-generated daily.\n\n`;
+  const unique = [];
+  const seen = new Set();
 
   for (const s of sources) {
+    if (!seen.has(s.stream_url)) {
+      seen.add(s.stream_url);
+      unique.push(s);
+    }
+  }
+
+  let m3u = "#EXTM3U\n";
+  m3u += `# Updated: ${new Date().toISOString()}\n`;
+  m3u += `# Sources: ${unique.length} live streams\n\n`;
+
+  for (const s of unique) {
     const title = s.resolvedTitle || s.name;
     const logo = s.logo_url || "";
     const group = s.group_name || "Cricket";
 
-    m3u += `#EXTINF:-1 tvg-id="${s.id}" tvg-name="${s.name}" tvg-logo="${logo}" group-title="${group}"`;
-    if (s.country) m3u += ` tvg-country="${s.country}"`;
-    if (s.language) m3u += ` tvg-language="${s.language}"`;
-    m3u += `,${title}\n`;
+    m3u += `#EXTINF:-1 tvg-id="${s.id}" tvg-name="${s.name}" tvg-logo="${logo}" group-title="${group}",${title}\n`;
     m3u += `${s.stream_url}\n\n`;
   }
 
@@ -316,7 +412,7 @@ function generateM3U(sources) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Main
+// Main Execution Pipeline
 // ─────────────────────────────────────────────────────────────
 
 async function main() {
@@ -362,7 +458,7 @@ async function main() {
         ...iccTv,
         isLive: true,
         stream_url: iccTv.source_url,
-        resolvedTitle: iccTv.name,
+        resolvedTitle: iccTv.name
       });
     }
   }
@@ -380,9 +476,10 @@ async function main() {
       name: s.name,
       stream_url: s.stream_url,
       country: s.country,
-      group_name: s.group_name,
-    })),
+      group_name: s.group_name
+    }))
   };
+
   const summaryPath = resolve(__dirname, "playlist-status.json");
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2), "utf-8");
   console.log(`Status summary written to: ${summaryPath}`);
