@@ -1,3 +1,4 @@
+import ws from "ws";
 import { createClient } from "@supabase/supabase-js";
 import { writeFileSync, readFileSync, existsSync } from "fs";
 import { resolve, dirname } from "path";
@@ -13,7 +14,11 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
   process.exit(1);
 }
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY, {
+  realtime: {
+    transport: ws
+  }
+});
 
 // ─── YouTube helpers ──────────────────────────────────────────────
 
