@@ -1,12 +1,8 @@
-import ws from "ws";
 import { createClient } from "@supabase/supabase-js";
 import { writeFileSync, readFileSync, existsSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
-realtime: {
-  transport: ws
-}
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
