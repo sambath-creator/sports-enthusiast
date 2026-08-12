@@ -159,6 +159,18 @@ async function discoverYouTubeChannelsFromRepo(repoUrl) {
 // ─────────────────────────────────────────────────────────────
 
 async function autoInsertSources(newSources) {
+  // Clear old scraped streams from previous runs before inserting new ones
+  const { error: deleteError } = await supabase
+    .from("sources")
+    .delete()
+    .not("discovered_from", "is", null);
+
+  if (deleteError) {
+    console.error("Failed to delete old auto-discovered streams:", deleteError.message);
+  } else {
+    console.log("Cleared old auto-discovered streams from previous runs.");
+  }
+
   if (newSources.length === 0) return;
 
   const unique = [];
