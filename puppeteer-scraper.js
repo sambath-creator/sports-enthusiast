@@ -78,10 +78,29 @@ export async function runPuppeteerScraper() {
       // Extract match links or buttons
       const matches = await page.evaluate(() => {
         const items = [];
-        // Look for typical match links (Touchcric style)
-        document.querySelectorAll('a').forEach(a => {
-          if (a.href.includes('/live/') || a.href.includes('/stream/') || a.href.includes('/watch/')) {
-            items.push({ text: a.innerText.trim(), href: a.href, type: 'link' });
+        // Look for typical match links
+        document.querySelectorAll("a").forEach(a => {
+          const text = a.innerText.trim();
+          const href = a.href.toLowerCase();
+          
+          // Exclude unwanted links
+          if (!text || text.length < 3 || href.includes("telegram") || href.includes("betting") || href.includes("casino") || href.includes("app")) return;
+          
+          // Check if it looks like a match link
+          if (
+            href.includes("/live") || 
+            href.includes("/watch") || 
+            href.includes("match") ||
+            href.includes("stream") ||
+            href.includes(".php?id=") ||
+            href.includes("cricfree.live/live") ||
+            href.includes("crichd.tv/watch") ||
+            text.toLowerCase().includes("vs") ||
+            text.toLowerCase().includes("v/s") ||
+            text.toLowerCase().includes("league") ||
+            text.toLowerCase().includes("t20")
+          ) {
+            items.push({ text, href: a.href, type: 'link' });
           }
         });
         
@@ -162,58 +181,27 @@ export async function runPuppeteerScraper() {
             console.log("No quality buttons found. Assuming direct to stream page.");
           }
 
-          // HOP 3 — Video page
-          // Inject script to steal the URL
+          // Trigger playback to generate network requests
           const allFrames = page.frames();
           for (const frame of allFrames) {
             try {
-              const interceptedUrl = await frame.evaluate(() => {
-                return new Promise((resolve) => {
-                  // Check if it's already in the source tag
-                  const source = document.querySelector('source');
-                  if (source && source.src && source.src.includes('.m3u8')) {
-                    return resolve(source.src);
-                  }
-                  
-                  // If Hls exists, override loadSource
-                  if (window.Hls && window.Hls.prototype) {
-                    const originalLoadSource = window.Hls.prototype.loadSource;
-                    window.Hls.prototype.loadSource = function(url) {
-                      resolve(url); // We got it!
-                      return originalLoadSource.apply(this, arguments);
-                    };
-                    
-                    // Also try to trigger play just in case it's waiting for it
-                    if (window.jQuery) {
-                      window.jQuery('video').trigger('play');
-                    } else {
-                      const v = document.querySelector('video');
-                      if (v) {
-                        v.dispatchEvent(new Event('play'));
-                        v.play().catch(()=>{});
-                      }
-                    }
-                  } else {
-                    // Try to find it in the HTML as fallback
-                    const html = document.body.innerHTML;
-                    const matches = html.match(/https?:\/\/[^"']+\.m3u8[^"']*/i);
-                    if (matches) resolve(matches[0]);
-                    else resolve(null);
-                  }
-                  
-                  // Timeout after 5 seconds
-                  setTimeout(() => resolve(null), 5000);
-                });
+              await frame.evaluate(() => {
+                if (window.jQuery) {
+                  window.jQuery('video').trigger('play');
+                  window.jQuery('video').trigger('touchstart');
+                }
+                const v = document.querySelector('video');
+                if (v) {
+                  v.dispatchEvent(new Event('play'));
+                  v.dispatchEvent(new Event('touchstart'));
+                  v.play().catch(()=>{});
+                }
               });
-              
-              if (interceptedUrl) {
-                console.log("Intercepted m3u8 directly from JS!", interceptedUrl);
-                siteStreams.add(interceptedUrl);
-              }
-            } catch (err) {
-              // Ignore cross-origin errors if web security is enabled
-            }
+            } catch (err) {}
           }
+          
+          // Wait 4 seconds to allow the player to update `ea` and fetch the real stream
+          await sleep(4000);
 
           for (const frame of allFrames) {
             try {

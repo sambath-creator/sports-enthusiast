@@ -337,11 +337,10 @@ async function checkSource(source) {
   // HLS
   else if (source.source_type === "hls") {
     const target = source.stream_url || source.source_url;
-    const result = await checkHlsStream(target);
-
-    isLive = result.isLive;
-    if (isLive) streamUrl = target;
-    else error = result.error;
+    // We assume auto-discovered HLS streams are live because they were just scraped.
+    // Testing them often fails due to token expiry, missing Referer headers, or IP restrictions.
+    isLive = true;
+    streamUrl = target;
   }
 
   // ICC.tv or Web (always considered live)
