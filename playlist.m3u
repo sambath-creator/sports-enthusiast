@@ -1,23 +1,28 @@
 #EXTM3U
-# Updated: 2026-08-12T10:54:28.880Z
-# Sources: 5 live streams
+# Updated: 2026-08-12T11:29:21.821Z
+# Sources: 4 live streams
 
-#EXTINF:-1 tvg-id="9" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
+#EXTINF:-1 tvg-id="15" tvg-name="Ireland Vs Afghanistan
+Watch Live - touchcric.is" tvg-logo="" group-title="Cricket",Ireland Vs Afghanistan
+Watch Live - touchcric.is
+#EXTVLCOPT:http-referrer=https://touchcric.is
+https://002.cdnplayer.eu/live/csstream6/playlist.m3u8?id=1006&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
+
+#EXTINF:-1 tvg-id="16" tvg-name="Ireland Vs Afghanistan
+Watch Live - touchcric.is" tvg-logo="" group-title="Cricket",Ireland Vs Afghanistan
+Watch Live - touchcric.is
+#EXTVLCOPT:http-referrer=https://touchcric.is
+https://002.cdnplayer.eu/live/csstream6/chunklist.m3u8?vidictid=206772913697&id=1006&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
+
+#EXTINF:-1 tvg-id="13" tvg-name="The Hundred, 2026
+Watch Live - touchcric.is" tvg-logo="" group-title="Cricket",The Hundred, 2026
+Watch Live - touchcric.is
 #EXTVLCOPT:http-referrer=https://touchcric.is
 https://002.cdnplayer.eu/live/csstream3/playlist.m3u8?id=1003&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
 
-#EXTINF:-1 tvg-id="10" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
+#EXTINF:-1 tvg-id="14" tvg-name="The Hundred, 2026
+Watch Live - touchcric.is" tvg-logo="" group-title="Cricket",The Hundred, 2026
+Watch Live - touchcric.is
 #EXTVLCOPT:http-referrer=https://touchcric.is
-https://002.cdnplayer.eu/live/csstream3/chunklist.m3u8?vidictid=206776363893&id=1003&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
-
-#EXTINF:-1 tvg-id="11" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
-#EXTVLCOPT:http-referrer=https://touchcric.is
-https://001.cdnplayer.eu/live/csstream6/playlist.m3u8?id=1006&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
-
-#EXTINF:-1 tvg-id="12" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
-#EXTVLCOPT:http-referrer=https://touchcric.is
-https://001.cdnplayer.eu/live/csstream6/chunklist.m3u8?vidictid=206776679424&id=1006&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
-
-#EXTINF:-1 tvg-id="1" tvg-name="ICC TV" tvg-logo="" group-title="Cricket",ICC TV
-https://www.icc.tv/
+https://002.cdnplayer.eu/live/csstream3/chunklist.m3u8?vidictid=206772459908&id=1003&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
 
