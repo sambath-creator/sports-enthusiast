@@ -3,8 +3,11 @@ import puppeteer from "puppeteer";
 const SITES = [
   "https://touchcric.is",
   "https://smartcric.is",
-  "https://freehit.eu/free/", // Note the trailing slash! Important to avoid redirect to blog.
-  "https://crichd.mobile"
+  "https://freehit.eu/free/",
+  "https://crichd.mobile",
+  "https://cricstream.me",
+  "https://webcric.com",
+  "https://crictime.com"
 ];
 
 const MOBILE_EMULATION = {
