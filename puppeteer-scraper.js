@@ -4,9 +4,7 @@ const SITES = [
   "https://touchcric.is",
   "https://smartcric.is",
   "https://freehit.eu/free/", // Note the trailing slash! Important to avoid redirect to blog.
-  "https://crichd.tv",
-  "https://cricfree.live",
-  "https://mylivecricket.in"
+  "https://crichd.mobile"
 ];
 
 const MOBILE_EMULATION = {
