@@ -52,8 +52,9 @@ export async function runPuppeteerScraper() {
   for (const site of SITES) {
     console.log(`\n=== Puppeteer scraping: ${site} ===`);
     
-    // We will use a Set to capture streams for the current site to avoid duplicates
-    const siteStreams = new Set();
+    // We will use a Map to capture streams and their associated match names
+    const siteStreams = new Map();
+    let currentMatchName = "Auto Stream";
     
     // Set up the request listener for this site
     const requestHandler = async (request) => {
@@ -61,7 +62,7 @@ export async function runPuppeteerScraper() {
         const url = request.url();
         if (url.includes(".m3u8") || url.includes("playlist")) {
           console.log("INTERCEPTED REQUEST:", url);
-          siteStreams.add(url);
+          siteStreams.set(url, currentMatchName);
         }
       } catch (_) {}
     };
@@ -129,6 +130,7 @@ export async function runPuppeteerScraper() {
       for (const match of uniqueMatches) {
         try {
           console.log(`\nTrying match: ${match.text}`);
+          currentMatchName = match.text;
 
           // Navigate to starting page
           await page.goto(site, { waitUntil: "networkidle2", timeout: 30000 });
@@ -206,14 +208,14 @@ export async function runPuppeteerScraper() {
               // Look for video tags
               const videoSrc = await frame.$eval("video", v => v.src).catch(() => null);
               if (videoSrc && videoSrc.includes(".m3u8")) {
-                siteStreams.add(videoSrc);
+                siteStreams.set(videoSrc, currentMatchName);
               }
 
               // Look for script-based players
               const html = await frame.content().catch(() => "");
               const m3u8Matches = html.match(/https?:\/\/[^"']+\.m3u8/gi);
               if (m3u8Matches) {
-                m3u8Matches.forEach(url => siteStreams.add(url));
+                m3u8Matches.forEach(url => siteStreams.set(url, currentMatchName));
               }
             } catch (_) {}
           }
@@ -230,12 +232,15 @@ export async function runPuppeteerScraper() {
     }
     
     // Add collected streams to discovered array
-    for (let m3u8 of siteStreams) {
+    for (let [m3u8, mName] of siteStreams.entries()) {
       if (m3u8.includes("unknown")) {
         m3u8 = m3u8.replace("unknown", "1freecdn.xyz");
       }
+      
+      const host = new URL(site).hostname.replace("www.", "");
+      
       discovered.push({
-        name: "Auto Stream",
+        name: `${mName} - ${host}`,
         type: "hls",
         url: m3u8,
         discovered_from: site
