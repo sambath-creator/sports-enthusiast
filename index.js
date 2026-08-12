@@ -455,16 +455,7 @@ async function main() {
   console.log(`\n${liveSources.length} of ${sources.length} sources are currently live.`);
 
   if (liveSources.length === 0) {
-    console.log("No live streams found. Adding ICC.tv reference.");
-    const iccTv = sources.find((s) => s.source_type === "icc_tv");
-    if (iccTv) {
-      liveSources.push({
-        ...iccTv,
-        isLive: true,
-        stream_url: iccTv.source_url,
-        resolvedTitle: iccTv.name
-      });
-    }
+    console.log("No live streams found. Playlist will be empty.");
   }
 
   const m3uContent = generateM3U(liveSources);
