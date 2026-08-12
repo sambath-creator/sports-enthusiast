@@ -1,17 +1,23 @@
 {
-  "generated_at": "2026-08-12T09:14:18.320Z",
-  "total_sources": 5,
-  "live_count": 3,
+  "generated_at": "2026-08-12T10:01:15.925Z",
+  "total_sources": 6,
+  "live_count": 4,
   "live_sources": [
     {
       "name": "Auto Stream",
-      "stream_url": "https://1freecdn.xyz/live/csstream5/playlist.m3u8?id=1005&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c",
+      "stream_url": "https://1freecdn.xyz/live/csstream3/playlist.m3u8?id=1003&pk=3e161898573b0f27c96309c26fcba32ced139d1ece162a31e737805ff9bca131f7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c",
       "country": null,
       "group_name": "Cricket"
     },
     {
       "name": "Auto Stream",
-      "stream_url": "https://1freecdn.xyz/live/csstream5/playlist.m3u8?id=1005&pk=6ffc1f387974e8a716de50c3e415b3ccd1a3f5812f1cd20072f1ab7f9ed502faf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c",
+      "stream_url": "https://001.cdnplayer.eu/live/csstream6/playlist.m3u8?id=1006&pk=3e161898573b0f27c96309c26fcba32ced139d1ece162a31e737805ff9bca131f7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c",
+      "country": null,
+      "group_name": "Cricket"
+    },
+    {
+      "name": "Auto Stream",
+      "stream_url": "https://001.cdnplayer.eu/live/csstream6/chunklist.m3u8?vidictid=20677902760&id=1006&pk=3e161898573b0f27c96309c26fcba32ced139d1ece162a31e737805ff9bca131f7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c",
       "country": null,
       "group_name": "Cricket"
     },
