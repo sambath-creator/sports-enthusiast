@@ -397,7 +397,19 @@ function generateM3U(sources) {
     const group = s.group_name || "Cricket";
 
     m3u += `#EXTINF:-1 tvg-id="${s.id}" tvg-name="${s.name}" tvg-logo="${logo}" group-title="${group}",${title}\n`;
-    m3u += `${s.stream_url}\n\n`;
+    
+    // Add standard IPTV referrer headers
+    if (s.discovered_from) {
+      m3u += `#EXTVLCOPT:http-referrer=${s.discovered_from}\n`;
+    }
+    
+    // Append pipe-syntax headers to URL for Web Video Cast / TiviMate
+    let url = s.stream_url;
+    if (s.discovered_from && url.includes(".m3u8")) {
+      url += `|Referer=${s.discovered_from}`;
+    }
+    
+    m3u += `${url}\n\n`;
   }
 
   return m3u;
