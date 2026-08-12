@@ -1,18 +1,22 @@
 #EXTM3U
-# Updated: 2026-08-12T10:01:15.925Z
-# Sources: 4 live streams
+# Updated: 2026-08-12T10:54:28.880Z
+# Sources: 5 live streams
 
-#EXTINF:-1 tvg-id="6" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
+#EXTINF:-1 tvg-id="9" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
 #EXTVLCOPT:http-referrer=https://touchcric.is
-https://1freecdn.xyz/live/csstream3/playlist.m3u8?id=1003&pk=3e161898573b0f27c96309c26fcba32ced139d1ece162a31e737805ff9bca131f7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
+https://002.cdnplayer.eu/live/csstream3/playlist.m3u8?id=1003&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
 
-#EXTINF:-1 tvg-id="7" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
+#EXTINF:-1 tvg-id="10" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
 #EXTVLCOPT:http-referrer=https://touchcric.is
-https://001.cdnplayer.eu/live/csstream6/playlist.m3u8?id=1006&pk=3e161898573b0f27c96309c26fcba32ced139d1ece162a31e737805ff9bca131f7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
+https://002.cdnplayer.eu/live/csstream3/chunklist.m3u8?vidictid=206776363893&id=1003&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
 
-#EXTINF:-1 tvg-id="8" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
+#EXTINF:-1 tvg-id="11" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
 #EXTVLCOPT:http-referrer=https://touchcric.is
-https://001.cdnplayer.eu/live/csstream6/chunklist.m3u8?vidictid=20677902760&id=1006&pk=3e161898573b0f27c96309c26fcba32ced139d1ece162a31e737805ff9bca131f7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
+https://001.cdnplayer.eu/live/csstream6/playlist.m3u8?id=1006&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
+
+#EXTINF:-1 tvg-id="12" tvg-name="Auto Stream" tvg-logo="" group-title="Cricket",Auto Stream
+#EXTVLCOPT:http-referrer=https://touchcric.is
+https://001.cdnplayer.eu/live/csstream6/chunklist.m3u8?vidictid=206776679424&id=1006&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c|Referer=https://touchcric.is
 
 #EXTINF:-1 tvg-id="1" tvg-name="ICC TV" tvg-logo="" group-title="Cricket",ICC TV
 https://www.icc.tv/
