@@ -159,26 +159,35 @@ export async function runPuppeteerScraper() {
           // Wait for navigation and potential quality buttons to appear
           await sleep(5000);
 
-          // HOP 2 — Quality selection (if present)
-          const qualityButtons = await page.$$eval("button", btns =>
+          // HOP 2 — Source/Quality selection (if present)
+          const availableButtons = await page.$$eval("button, a.btn, a.button", btns =>
             btns.map(b => b.innerText.trim()).filter(Boolean)
           );
 
-          const preferred = ["High", "Medium", "Low"];
-          let qualityToClick = preferred.find(q => qualityButtons.includes(q));
+          const keywords = ["High", "Medium", "Low", "Watch", "Play", "Source"];
+          const buttonsToClick = availableButtons.filter(btnText => 
+            keywords.some(k => btnText.toLowerCase().includes(k.toLowerCase()))
+          );
 
-          if (qualityToClick) {
-            console.log(`Found quality buttons. Selecting quality: ${qualityToClick}`);
-            await page.evaluate((text) => {
-              const btns = Array.from(document.querySelectorAll("button"));
-              const btn = btns.find(b => b.innerText.trim() === text);
-              if (btn) btn.click();
-            }, qualityToClick);
-            
-            // Wait for video page after quality selection
-            await sleep(5000);
+          if (buttonsToClick.length > 0) {
+            console.log(`Found source/quality buttons: ${buttonsToClick.join(', ')}`);
+            for (const btnText of buttonsToClick) {
+              try {
+                console.log(`Clicking: ${btnText}`);
+                await page.evaluate((text) => {
+                  const elements = Array.from(document.querySelectorAll("button, a.btn, a.button"));
+                  const el = elements.find(e => e.innerText.trim() === text);
+                  if (el) el.click();
+                }, btnText);
+                // Wait for potential iframe load
+                await sleep(4000);
+              } catch (e) {
+                console.log(`Navigation occurred or element lost while clicking ${btnText}`);
+                break; // If page navigated away, stop clicking other buttons
+              }
+            }
           } else {
-            console.log("No quality buttons found. Assuming direct to stream page.");
+            console.log("No source/quality buttons found. Assuming direct to stream page.");
           }
 
           // Trigger playback to generate network requests
