@@ -1,8 +1,20 @@
 {
-  "generated_at": "2026-08-12T06:45:25.489Z",
-  "total_sources": 4,
-  "live_count": 1,
+  "generated_at": "2026-08-12T07:26:22.212Z",
+  "total_sources": 5,
+  "live_count": 3,
   "live_sources": [
+    {
+      "name": "Auto Stream",
+      "stream_url": "https://1freecdn.xyz/live/csstream5/playlist.m3u8?id=1005&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963cf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c",
+      "country": null,
+      "group_name": "Cricket"
+    },
+    {
+      "name": "Auto Stream",
+      "stream_url": "https://1freecdn.xyz/live/csstream5/playlist.m3u8?id=1005&pk=6ffc1f387974e8a716de50c3e415b3ccd1a3f5812f1cd20072f1ab7f9ed502faf7ed07467a00f8acb92be38f867d84492153ca3e399ceacc5fbbf245af02603c",
+      "country": null,
+      "group_name": "Cricket"
+    },
     {
       "name": "ICC TV",
       "stream_url": "https://www.icc.tv/",
