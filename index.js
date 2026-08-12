@@ -355,10 +355,10 @@ async function checkSource(source) {
     streamUrl = target;
   }
 
-  // ICC.tv or Web (always considered live)
+  // ICC.tv or Web (these are HTML pages, not streams, so we exclude them)
   else if (source.source_type === "icc_tv" || source.source_type === "web") {
-    streamUrl = source.source_url;
-    isLive = true;
+    isLive = false;
+    error = "Rejected: HTML web pages cannot be casted directly";
   }
 
   // Log check result
