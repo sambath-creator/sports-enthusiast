@@ -249,7 +249,7 @@ export async function runPuppeteerScraper() {
       const host = new URL(site).hostname.replace("www.", "");
       
       discovered.push({
-        name: `${mName} - ${host}`,
+        name: host,
         type: "hls",
         url: m3u8,
         discovered_from: site
