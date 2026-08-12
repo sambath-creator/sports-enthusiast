@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node --check index.js",
     "update": "node index.js --update",
-    "test": "node --test"
+    "test": "node --test",
+    "sync": "node --env-file=.env index.js && git add playlist.m3u playlist-status.json && git commit -m \"Local playlist update\" && git push origin HEAD:main"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",
