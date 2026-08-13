@@ -5,8 +5,24 @@ const SITES = [
   "https://smartcric.is",
   "https://freehit.eu/free/",
   "https://crichd.mobile",
-  "https://crictime.com"
+  "https://crictime.com",
+  "https://www.freelivesports.tv/sport/sports/",
+  "https://eurovisionsport.com/en/explore/sports"
 ];
+
+function guessSport(title) {
+  if (!title) return 'Sports';
+  const t = title.toLowerCase();
+  
+  if (t.includes('cricket') || t.includes('t20') || t.includes('odi') || t.includes('test match') || t.includes('ipl') || t.includes('bbl') || t.includes('hundred') || t.includes('psl') || t.includes('cpl')) return 'Cricket';
+  if (t.includes('fc') || t.includes('madrid') || t.includes('united') || t.includes('city') || t.includes('league') || t.includes('cup') || t.includes('football') || t.includes('soccer') || t.includes('liga') || t.includes('serie a')) return 'Football';
+  if (t.includes('tennis') || t.includes('atp') || t.includes('wta') || t.includes('wimbledon') || t.includes('open') || t.includes('slam') || t.includes('roland garros')) return 'Tennis';
+  if (t.includes('nba') || t.includes('basketball') || t.includes('fiba')) return 'Basketball';
+  if (t.includes('f1') || t.includes('formula 1') || t.includes('prix') || t.includes('motogp')) return 'Motorsport';
+  if (t.includes('rugby') || t.includes('nfl') || t.includes('super bowl')) return 'Rugby/NFL';
+  
+  return 'Live Sports';
+}
 
 const MOBILE_EMULATION = {
   viewport: {
@@ -259,7 +275,8 @@ export async function runPuppeteerScraper() {
         name: host,
         type: "hls",
         url: m3u8,
-        discovered_from: site
+        discovered_from: site,
+        group: guessSport(mName)
       });
     }
     console.log(`=> Discovered ${siteStreams.size} streams from ${site}`);
