@@ -1,4 +1,12 @@
 #EXTM3U
-# Updated: 2026-08-13T17:56:25.543Z
-# Sources: 0 live streams
+# Updated: 2026-08-13T20:44:48.860Z
+# Sources: 2 live streams
+
+#EXTINF:-1 tvg-id="33" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
+#EXTVLCOPT:http-referrer=https://www.freelivesports.tv/sport/sports/
+https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/playlist.m3u8?channel_name=Free%20Live%20Sports&content_genre=Sport&ic=IAB17&rating=PG&language=US&provider=FreeLiveSports&us_privacy=&gdpr=0&gdpr_consent=&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D6875ade410a8805e9083e973&lmt=0&did=utjCd0|Referer=https://www.freelivesports.tv/sport/sports/
+
+#EXTINF:-1 tvg-id="34" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
+#EXTVLCOPT:http-referrer=https://www.freelivesports.tv/sport/sports/
+https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/b7ee055c-9757-11f1-b403-7e95027e7369/32/426x240_340000/index.m3u8|Referer=https://www.freelivesports.tv/sport/sports/
 
