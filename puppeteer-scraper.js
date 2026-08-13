@@ -4,7 +4,6 @@ const SITES = [
   "https://touchcric.is",
   "https://smartcric.is",
   "https://freehit.eu/free/",
-  "https://crichd.mobile",
   "https://crictime.com",
   "https://www.freelivesports.tv/sport/sports/",
   "https://eurovisionsport.com/en/explore/sports"
