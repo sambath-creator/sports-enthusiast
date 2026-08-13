@@ -89,7 +89,7 @@ export async function runPuppeteerScraper() {
           if (!text || text.length < 3 || 
               href.includes("telegram") || href.includes("betting") || href.includes("casino") || href.includes("app")) return;
               
-          const junkPhrases = ["skip to", "admin", "kisa zahra", "home", "contact", "about", "policy", "terms", "login", "register", "dmca", "author"];
+          const junkPhrases = ["skip to", "admin", "home", "contact", "about", "policy", "terms", "login", "register", "dmca", "author"];
           if (junkPhrases.some(phrase => lowerText.includes(phrase))) return;
           
           // Check if it looks like a match link
