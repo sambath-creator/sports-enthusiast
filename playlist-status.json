@@ -1,31 +1,6 @@
 {
-  "generated_at": "2026-08-13T00:40:08.238Z",
-  "total_sources": 7,
-  "live_count": 4,
-  "live_sources": [
-    {
-      "name": "touchcric.is",
-      "stream_url": "https://002.cdnplayer.eu/live/csstream5/chunklist.m3u8?vidictid=206785008004&id=1005&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963c0b072c6c276fc2ed6b7e190cf03d771520ad73eb44131b874843c07bd1956446",
-      "country": null,
-      "group_name": "Cricket"
-    },
-    {
-      "name": "touchcric.is",
-      "stream_url": "https://001.cdnplayer.eu/live/csstream4/playlist.m3u8?id=1004&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963c0b072c6c276fc2ed6b7e190cf03d771520ad73eb44131b874843c07bd1956446",
-      "country": null,
-      "group_name": "Cricket"
-    },
-    {
-      "name": "touchcric.is",
-      "stream_url": "https://001.cdnplayer.eu/live/csstream4/chunklist.m3u8?vidictid=2067868499&id=1004&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963c0b072c6c276fc2ed6b7e190cf03d771520ad73eb44131b874843c07bd1956446",
-      "country": null,
-      "group_name": "Cricket"
-    },
-    {
-      "name": "touchcric.is",
-      "stream_url": "https://002.cdnplayer.eu/live/csstream5/playlist.m3u8?id=1005&pk=a9576d37d6e89bc7dfa294b1a98a2b4d6af7850fe3441f5b617cc3a9e659963c0b072c6c276fc2ed6b7e190cf03d771520ad73eb44131b874843c07bd1956446",
-      "country": null,
-      "group_name": "Cricket"
-    }
-  ]
+  "generated_at": "2026-08-13T13:25:35.864Z",
+  "total_sources": 3,
+  "live_count": 0,
+  "live_sources": []
 }
