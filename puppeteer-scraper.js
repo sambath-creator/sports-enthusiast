@@ -5,8 +5,6 @@ const SITES = [
   "https://smartcric.is",
   "https://freehit.eu/free/",
   "https://crichd.mobile",
-  "https://cricstream.me",
-  "https://webcric.com",
   "https://crictime.com"
 ];
 
