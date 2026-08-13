@@ -265,6 +265,10 @@ export async function runPuppeteerScraper() {
     console.log(`=> Discovered ${siteStreams.size} streams from ${site}`);
   }
 
-  await browser.close();
+  try {
+    await browser.close();
+  } catch (err) {
+    console.log("Warning: Failed to close browser cleanly (usually a Windows EBUSY lock). Ignoring.");
+  }
   return discovered;
 }
