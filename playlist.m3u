@@ -1,24 +1,24 @@
 #EXTM3U
-# Updated: 2026-08-16T08:46:39.205Z
+# Updated: 2026-08-16T11:38:12.205Z
 # Sources: 5 live streams
 
-#EXTINF:-1 tvg-id="54" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
+#EXTINF:-1 tvg-id="59" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
 #EXTVLCOPT:http-referrer=https://www.freelivesports.tv/sport/sports/
-https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/playlist.m3u8?channel_name=Free%20Live%20Sports&content_genre=Sport&ic=IAB17&rating=PG&language=US&provider=FreeLiveSports&us_privacy=&gdpr=0&gdpr_consent=&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D6875ade410a8805e9083e973&lmt=0&did=XvllVd|Referer=https://www.freelivesports.tv/sport/sports/
+https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/playlist.m3u8?channel_name=Free%20Live%20Sports&content_genre=Sport&ic=IAB17&rating=PG&language=US&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpCecAQpCecAAHABBENCrFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D6875ade410a8805e9083e973&lmt=0&did=NFHMAj|Referer=https://www.freelivesports.tv/sport/sports/
 
-#EXTINF:-1 tvg-id="55" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
+#EXTINF:-1 tvg-id="60" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
 #EXTVLCOPT:http-referrer=https://www.freelivesports.tv/sport/sports/
-https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/e16e9a0e-994e-11f1-b67b-da009f997b9b/95/426x240_340000/index.m3u8|Referer=https://www.freelivesports.tv/sport/sports/
+https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/e05d78ce-9966-11f1-99dd-4a59e1d26bd9/181/426x240_340000/index.m3u8|Referer=https://www.freelivesports.tv/sport/sports/
 
-#EXTINF:-1 tvg-id="53" tvg-name="touchcric.is" tvg-logo="" group-title="Football",touchcric.is
+#EXTINF:-1 tvg-id="58" tvg-name="touchcric.is" tvg-logo="" group-title="Football",touchcric.is
 #EXTVLCOPT:http-referrer=https://touchcric.is
 https://002.cdnplayer.eu/live/csstream5/playlist.m3u8?id=1005&pk=4c563e11a456d5c02efc64762383f87a7e36e887cf9fb2f2f5e1086483f5d678a19c79c927cb4b7c72298022783256b1bf434730158d193661557b25b90e2970|Referer=https://touchcric.is
 
-#EXTINF:-1 tvg-id="52" tvg-name="touchcric.is" tvg-logo="" group-title="Live Sports",touchcric.is
+#EXTINF:-1 tvg-id="57" tvg-name="touchcric.is" tvg-logo="" group-title="Live Sports",touchcric.is
 #EXTVLCOPT:http-referrer=https://touchcric.is
 https://002.cdnplayer.eu/live/csstream4/playlist.m3u8?id=1004&pk=4c563e11a456d5c02efc64762383f87a7e36e887cf9fb2f2f5e1086483f5d678a19c79c927cb4b7c72298022783256b1bf434730158d193661557b25b90e2970|Referer=https://touchcric.is
 
-#EXTINF:-1 tvg-id="51" tvg-name="touchcric.is" tvg-logo="" group-title="Live Sports",touchcric.is
+#EXTINF:-1 tvg-id="56" tvg-name="touchcric.is" tvg-logo="" group-title="Live Sports",touchcric.is
 #EXTVLCOPT:http-referrer=https://touchcric.is
 https://002.cdnplayer.eu/live/csstream1/playlist.m3u8?id=1001&pk=4c563e11a456d5c02efc64762383f87a7e36e887cf9fb2f2f5e1086483f5d678a19c79c927cb4b7c72298022783256b1bf434730158d193661557b25b90e2970|Referer=https://touchcric.is
 

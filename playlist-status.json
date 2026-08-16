@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-08-16T08:46:39.249Z",
+  "generated_at": "2026-08-16T11:38:12.212Z",
   "total_sources": 8,
   "live_count": 5,
   "live_sources": [
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/playlist.m3u8?channel_name=Free%20Live%20Sports&content_genre=Sport&ic=IAB17&rating=PG&language=US&provider=FreeLiveSports&us_privacy=&gdpr=0&gdpr_consent=&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D6875ade410a8805e9083e973&lmt=0&did=XvllVd",
+      "stream_url": "https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/playlist.m3u8?channel_name=Free%20Live%20Sports&content_genre=Sport&ic=IAB17&rating=PG&language=US&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpCecAQpCecAAHABBENCrFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D6875ade410a8805e9083e973&lmt=0&did=NFHMAj",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/e16e9a0e-994e-11f1-b67b-da009f997b9b/95/426x240_340000/index.m3u8",
+      "stream_url": "https://amg26268-amg26268c27-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg26268-amg26268c27-amgplt0201/e05d78ce-9966-11f1-99dd-4a59e1d26bd9/181/426x240_340000/index.m3u8",
       "country": null,
       "group_name": "Live Sports"
     },
