@@ -1,133 +1,151 @@
 {
-  "generated_at": "2026-08-19T08:30:54.643Z",
-  "total_sources": 24,
-  "live_count": 21,
+  "generated_at": "2026-08-23T07:05:26.715Z",
+  "total_sources": 27,
+  "live_count": 24,
   "live_sources": [
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_951321.ts",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008922.ts",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_951317.ts",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008918.ts",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/31dd77fe-9ba8-11f1-b581-12d9d872e7d4/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260819tciencore&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_951318.ts&seen-ad=1&seg_id=951318&user_id=31dd77fe-9ba8-11f1-b581-12d9d872e7d4",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008919.ts",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_951318.ts",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/b5d753c2-9ec0-11f1-8f04-feb495ea625a/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260822tciencore2&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_1008920.ts&seen-ad=1&seg_id=1008920&user_id=b5d753c2-9ec0-11f1-8f04-feb495ea625a",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_951319.ts",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008920.ts",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/31dd77fe-9ba8-11f1-b581-12d9d872e7d4/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260819tciencore&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_951320.ts&seen-ad=1&seg_id=951320&user_id=31dd77fe-9ba8-11f1-b581-12d9d872e7d4",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008921.ts",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_951320.ts",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/b5d753c2-9ec0-11f1-8f04-feb495ea625a/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260822tciencore2&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_1008922.ts&seen-ad=1&seg_id=1008922&user_id=b5d753c2-9ec0-11f1-8f04-feb495ea625a",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpMXQAQpMXQAAHABBENCsFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=2zEcvN",
+      "stream_url": "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpZjAAQpZjAAAHABBENCsFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=dLrGMt",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpMXQAQpMXQAAHABBENCsFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=2zEcvN&ads.channel_name=Tennis%20Channel&ads.content_genre=Sport%2CTennis&ads.gdpr=1&ads.coppa=0&ads.p=sportstribal&ads.did=2zEcvN",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpZjAAQpZjAAAHABBENCsFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=dLrGMt&ads.channel_name=Tennis%20Channel&ads.content_genre=Sport%2CTennis&ads.gdpr=1&ads.coppa=0&ads.p=sportstribal&ads.did=dLrGMt",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/31dd77fe-9ba8-11f1-b581-12d9d872e7d4/197/426x240_391600/index.m3u8",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/b5d753c2-9ec0-11f1-8f04-feb495ea625a/29/426x240_391600/index.m3u8",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/31dd77fe-9ba8-11f1-b581-12d9d872e7d4/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260818tciencore&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_951314.ts&seen-ad=1&seg_id=951314&user_id=31dd77fe-9ba8-11f1-b581-12d9d872e7d4",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/b5d753c2-9ec0-11f1-8f04-feb495ea625a/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260822tciencore2&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_1008913.ts&seen-ad=1&seg_id=1008913&user_id=b5d753c2-9ec0-11f1-8f04-feb495ea625a",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_951314.ts",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008913.ts",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/31dd77fe-9ba8-11f1-b581-12d9d872e7d4/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260818tciencore&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_951315.ts&seen-ad=1&seg_id=951315&user_id=31dd77fe-9ba8-11f1-b581-12d9d872e7d4",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/b5d753c2-9ec0-11f1-8f04-feb495ea625a/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260822tciencore2&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_1008914.ts&seen-ad=1&seg_id=1008914&user_id=b5d753c2-9ec0-11f1-8f04-feb495ea625a",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_951315.ts",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008914.ts",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/31dd77fe-9ba8-11f1-b581-12d9d872e7d4/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260818tciencore&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_951316.ts&seen-ad=1&seg_id=951316&user_id=31dd77fe-9ba8-11f1-b581-12d9d872e7d4",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/b5d753c2-9ec0-11f1-8f04-feb495ea625a/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260822tciencore2&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_1008915.ts&seen-ad=1&seg_id=1008915&user_id=b5d753c2-9ec0-11f1-8f04-feb495ea625a",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_951316.ts",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008915.ts",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/31dd77fe-9ba8-11f1-b581-12d9d872e7d4/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260818tciencore&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_951317.ts&seen-ad=1&seg_id=951317&user_id=31dd77fe-9ba8-11f1-b581-12d9d872e7d4",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/b5d753c2-9ec0-11f1-8f04-feb495ea625a/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260822tciencore2&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_1008916.ts&seen-ad=1&seg_id=1008916&user_id=b5d753c2-9ec0-11f1-8f04-feb495ea625a",
+      "country": null,
+      "group_name": "Live Sports"
+    },
+    {
+      "name": "freelivesports.tv",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008916.ts",
+      "country": null,
+      "group_name": "Live Sports"
+    },
+    {
+      "name": "freelivesports.tv",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist240p_1008917.ts",
+      "country": null,
+      "group_name": "Live Sports"
+    },
+    {
+      "name": "freelivesports.tv",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/beacon/amg01444-tennischannelth-tennischnlintl-sportstribal/b5d753c2-9ec0-11f1-8f04-feb495ea625a/426x240_391600?bcn=1&ca=0&cid=quebeccityatpc260822tciencore2&dur=6.000000&media_type=C&redirect_url=https%3A%2F%2Famg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv%2Fplaylist240p_1008918.ts&seen-ad=1&seg_id=1008918&user_id=b5d753c2-9ec0-11f1-8f04-feb495ea625a",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "touchcric.is",
-      "stream_url": "https://002.cdnplayer.eu/live/csstream1/playlist.m3u8?id=1001&pk=1ebb96e6ee891ffa89bd0280aea869bdde5c5bae161a354f9cd0541c618e3eb85e6b91de5b02055cde0d67a0f72953325e00f01867afe8b7f41372711625f6a0",
+      "stream_url": "https://001.cdnplayer.eu/live/csstream1/playlist.m3u8?id=1001&pk=c01b619dc545aa22b85ab07d7152bfb61f2e211bc6e1f62cf00457e9d13ebfa0bcf3085fa7c1efc69bd4216650ae4b77a7ba3269c996c147a0d6cf5cfd8d408c",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "touchcric.is",
-      "stream_url": "https://002.cdnplayer.eu/live/csstream1/chunklist.m3u8?vidictid=206849697056&id=1001&pk=1ebb96e6ee891ffa89bd0280aea869bdde5c5bae161a354f9cd0541c618e3eb85e6b91de5b02055cde0d67a0f72953325e00f01867afe8b7f41372711625f6a0",
+      "stream_url": "https://001.cdnplayer.eu/live/csstream1/chunklist.m3u8?vidictid=206887250396&id=1001&pk=c01b619dc545aa22b85ab07d7152bfb61f2e211bc6e1f62cf00457e9d13ebfa0bcf3085fa7c1efc69bd4216650ae4b77a7ba3269c996c147a0d6cf5cfd8d408c",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "touchcric.is",
-      "stream_url": "https://002.cdnplayer.eu/live/csstream5/playlist.m3u8?id=1005&pk=1ebb96e6ee891ffa89bd0280aea869bdde5c5bae161a354f9cd0541c618e3eb85e6b91de5b02055cde0d67a0f72953325e00f01867afe8b7f41372711625f6a0",
+      "stream_url": "https://001.cdnplayer.eu/live/csstream4/playlist.m3u8?id=1004&pk=c01b619dc545aa22b85ab07d7152bfb61f2e211bc6e1f62cf00457e9d13ebfa0bcf3085fa7c1efc69bd4216650ae4b77a7ba3269c996c147a0d6cf5cfd8d408c",
       "country": null,
-      "group_name": "Football"
+      "group_name": "Live Sports"
     },
     {
       "name": "touchcric.is",
-      "stream_url": "https://002.cdnplayer.eu/live/csstream5/chunklist.m3u8?vidictid=206844084131&id=1005&pk=1ebb96e6ee891ffa89bd0280aea869bdde5c5bae161a354f9cd0541c618e3eb85e6b91de5b02055cde0d67a0f72953325e00f01867afe8b7f41372711625f6a0",
+      "stream_url": "https://001.cdnplayer.eu/live/csstream4/chunklist.m3u8?vidictid=206881330759&id=1004&pk=c01b619dc545aa22b85ab07d7152bfb61f2e211bc6e1f62cf00457e9d13ebfa0bcf3085fa7c1efc69bd4216650ae4b77a7ba3269c996c147a0d6cf5cfd8d408c",
       "country": null,
-      "group_name": "Football"
+      "group_name": "Live Sports"
     }
   ]
 }
