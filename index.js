@@ -305,8 +305,14 @@ function parseYouTubePage(html) {
 // HLS Checker
 // ─────────────────────────────────────────────────────────────
 
-async function checkHlsStream(streamUrl) {
-  const result = await fetchText(streamUrl, { timeoutMs: 15000 });
+async function checkHlsStream(streamUrl, referer) {
+  const headers = {};
+  if (referer) {
+    headers["Referer"] = referer;
+    headers["Origin"] = new URL(referer).origin;
+  }
+
+  const result = await fetchText(streamUrl, { timeoutMs: 15000, headers });
   if (!result.ok) {
     return { isLive: false, error: `HTTP ${result.status}` };
   }
@@ -349,10 +355,15 @@ async function checkSource(source) {
   // HLS
   else if (source.source_type === "hls") {
     const target = source.stream_url || source.source_url;
-    // We assume auto-discovered HLS streams are live because they were just scraped.
-    // Testing them often fails due to token expiry, missing Referer headers, or IP restrictions.
-    isLive = true;
-    streamUrl = target;
+    
+    // Check if the stream actually responds with an M3U8 (passing the scraped site as Referer)
+    const checkRes = await checkHlsStream(target, source.discovered_from);
+    if (checkRes.isLive) {
+      isLive = true;
+      streamUrl = target;
+    } else {
+      error = "HLS validation failed: " + checkRes.error;
+    }
   }
 
   // ICC.tv or Web (these are HTML pages, not streams, so we exclude them)
