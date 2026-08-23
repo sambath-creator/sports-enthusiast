@@ -306,6 +306,11 @@ function parseYouTubePage(html) {
 // ─────────────────────────────────────────────────────────────
 
 async function checkHlsStream(streamUrl, referer) {
+  // Quickly reject known audio/radio URL patterns
+  if (streamUrl.toLowerCase().includes("audio") || streamUrl.toLowerCase().includes("radio")) {
+    return { isLive: false, error: "Rejected: Audio-only stream pattern detected in URL" };
+  }
+
   const headers = {};
   if (referer) {
     headers["Referer"] = referer;
@@ -319,6 +324,13 @@ async function checkHlsStream(streamUrl, referer) {
 
   const text = result.text.trim();
   if (text.startsWith("#EXTM3U")) {
+    // If it's a master playlist, we can check for explicitly audio-only codecs (mp4a without avc1/hvc1)
+    // or if the playlist explicitly labels itself as audio.
+    const lowerText = text.toLowerCase();
+    if (lowerText.includes('type=audio') && !lowerText.includes('type=video') && !lowerText.includes('resolution=')) {
+        return { isLive: false, error: "Rejected: M3U8 content indicates audio-only stream" };
+    }
+    
     return { isLive: true };
   }
 
