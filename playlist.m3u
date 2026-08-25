@@ -1,24 +1,24 @@
 #EXTM3U
-# Updated: 2026-08-24T06:55:06.049Z
+# Updated: 2026-08-25T10:46:46.836Z
 # Sources: 5 live streams
 
-#EXTINF:-1 tvg-id="140" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
+#EXTINF:-1 tvg-id="159" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
 #EXTVLCOPT:http-referrer=https://www.freelivesports.tv/sport/sports/
-https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpc18AQpc18AAHABBENCsFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=M1Dcqa|Referer=https://www.freelivesports.tv/sport/sports/
+https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpgI4AQpgI4AAHABBENCtFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=O0ryPd|Referer=https://www.freelivesports.tv/sport/sports/
 
-#EXTINF:-1 tvg-id="141" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
+#EXTINF:-1 tvg-id="160" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
 #EXTVLCOPT:http-referrer=https://www.freelivesports.tv/sport/sports/
-https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpc18AQpc18AAHABBENCsFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=M1Dcqa&ads.channel_name=Tennis%20Channel&ads.content_genre=Sport%2CTennis&ads.gdpr=1&ads.coppa=0&ads.p=sportstribal&ads.did=M1Dcqa|Referer=https://www.freelivesports.tv/sport/sports/
+https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQpgI4AQpgI4AAHABBENCtFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=O0ryPd&ads.channel_name=Tennis%20Channel&ads.content_genre=Sport%2CTennis&ads.gdpr=1&ads.coppa=0&ads.p=sportstribal&ads.did=O0ryPd|Referer=https://www.freelivesports.tv/sport/sports/
 
-#EXTINF:-1 tvg-id="142" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
+#EXTINF:-1 tvg-id="161" tvg-name="freelivesports.tv" tvg-logo="" group-title="Live Sports",freelivesports.tv
 #EXTVLCOPT:http-referrer=https://www.freelivesports.tv/sport/sports/
-https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/9abd6240-9f88-11f1-ae3f-4a421f6e6f28/41/426x240_391600/index.m3u8|Referer=https://www.freelivesports.tv/sport/sports/
+https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/2d53ddb3-a072-11f1-ad41-0ee2e311fa73/118/426x240_391600/index.m3u8|Referer=https://www.freelivesports.tv/sport/sports/
 
-#EXTINF:-1 tvg-id="138" tvg-name="touchcric.is" tvg-logo="" group-title="Live Sports",touchcric.is
+#EXTINF:-1 tvg-id="157" tvg-name="touchcric.is" tvg-logo="" group-title="Live Sports",touchcric.is
 #EXTVLCOPT:http-referrer=https://touchcric.is
-https://001.cdnplayer.eu/live/csstream1/playlist.m3u8?id=1001&pk=c01b619dc545aa22b85ab07d7152bfb61f2e211bc6e1f62cf00457e9d13ebfa0048eecc9b902f74c67fbc797eb5687d409138c73ff84ca79e651e85dff4f09e9|Referer=https://touchcric.is
+https://002.cdnplayer.eu/live/csstream1/playlist.m3u8?id=1001&pk=c01b619dc545aa22b85ab07d7152bfb61f2e211bc6e1f62cf00457e9d13ebfa0eaeba811bb4c8d01d34d8f4521fdd456ba11b86c42efb64efc16331c8f23707a|Referer=https://touchcric.is
 
-#EXTINF:-1 tvg-id="139" tvg-name="touchcric.is" tvg-logo="" group-title="Live Sports",touchcric.is
+#EXTINF:-1 tvg-id="158" tvg-name="touchcric.is" tvg-logo="" group-title="Live Sports",touchcric.is
 #EXTVLCOPT:http-referrer=https://touchcric.is
-https://001.cdnplayer.eu/live/csstream1/chunklist.m3u8?vidictid=206894494908&id=1001&pk=c01b619dc545aa22b85ab07d7152bfb61f2e211bc6e1f62cf00457e9d13ebfa0048eecc9b902f74c67fbc797eb5687d409138c73ff84ca79e651e85dff4f09e9|Referer=https://touchcric.is
+https://002.cdnplayer.eu/live/csstream1/chunklist.m3u8?vidictid=206906645747&id=1001&pk=c01b619dc545aa22b85ab07d7152bfb61f2e211bc6e1f62cf00457e9d13ebfa0eaeba811bb4c8d01d34d8f4521fdd456ba11b86c42efb64efc16331c8f23707a|Referer=https://touchcric.is
 
