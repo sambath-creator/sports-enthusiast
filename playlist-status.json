@@ -1,25 +1,37 @@
 {
-  "generated_at": "2026-09-01T10:53:05.155Z",
-  "total_sources": 20,
-  "live_count": 3,
+  "generated_at": "2026-09-04T12:12:00.855Z",
+  "total_sources": 22,
+  "live_count": 5,
   "live_sources": [
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQp3NcAQp3NcAAHABBENCuFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=zyDmuU",
+      "stream_url": "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQqBGQAQqBGQAAHABBENCuFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=Xjvfcz",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQp3NcAQp3NcAAHABBENCuFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=zyDmuU&ads.channel_name=Tennis%20Channel&ads.content_genre=Sport%2CTennis&ads.gdpr=1&ads.coppa=0&ads.p=sportstribal&ads.did=zyDmuU",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/playlist.m3u8?channel_name=Tennis%20Channel&content_genre=Sport%2CTennis&ic=IAB17%2CIAB17-40&provider=FreeLiveSports&us_privacy=&gdpr=1&gdpr_consent=CQqBGQAQqBGQAAHABBENCuFgAAAAAELAAAAAAAALzgBAA0AXmAAA.IF5wAgAaALzA.YAAACFgAAAAA&coppa=0&content_livestream=1&p=sportstribal&url=https%3A%2F%2Fwatch.freelivesports.tv%2Fpages%2Fdiscover%2Fe%2Flive-tv%3Fchannel%3D666317fa213e560d3ddc5b56&lmt=0&did=Xjvfcz&ads.channel_name=Tennis%20Channel&ads.content_genre=Sport%2CTennis&ads.gdpr=1&ads.coppa=0&ads.p=sportstribal&ads.did=Xjvfcz",
       "country": null,
       "group_name": "Live Sports"
     },
     {
       "name": "freelivesports.tv",
-      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/23c8210f-a5f3-11f1-af68-1a09e7c83198/177/426x240_391600/index.m3u8",
+      "stream_url": "https://amg01444-tennischannelth-tennischnlintl-sportstribal-4pw2o.amagi.tv/ts-eu-w1-n2/playlist/amg01444-tennischannelth-tennischnlintl-sportstribal/b6d41222-a859-11f1-a76e-7eeaf7c387b3/68/426x240_391600/index.m3u8",
       "country": null,
       "group_name": "Live Sports"
+    },
+    {
+      "name": "touchcric.is",
+      "stream_url": "https://002.cdnplayer.eu/live/csstream5/playlist.m3u8?id=1005&pk=75f80a729180b15673db673674c1ecb8c115d7d6ef11d0e008e81adaca7e330c1eba0d0b9c7630741ec51f38a6d77886d9d4675de66cf3ef040e7374e2c5b494",
+      "country": null,
+      "group_name": "Football"
+    },
+    {
+      "name": "touchcric.is",
+      "stream_url": "https://002.cdnplayer.eu/live/csstream5/chunklist.m3u8?vidictid=207006425873&id=1005&pk=75f80a729180b15673db673674c1ecb8c115d7d6ef11d0e008e81adaca7e330c1eba0d0b9c7630741ec51f38a6d77886d9d4675de66cf3ef040e7374e2c5b494",
+      "country": null,
+      "group_name": "Football"
     }
   ]
 }
